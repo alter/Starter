@@ -1,0 +1,33 @@
+require 'rubygems'
+require 'sinatra'
+require 'haml'
+set :haml, :format => :html5
+
+get '/' do
+    haml :index
+end
+
+post '/' do
+    territory   = params[:territory]
+    version     = params[:version]
+    job         = params[:job]
+    server      = params[:server]
+##  Working variant
+#    system("/usr/bin/python /home/a1/GPT_launcher/launcher.py --job #{job} --config #{server} --territory #{territory} --version #{version}")
+
+##  Fork process with waiting for fork close
+#    pid = fork do
+#        system("/usr/bin/python /home/a1/GPT_launcher/launcher.py --job #{job} --config #{server} --territory #{territory} --version #{version}")
+#    end
+#    Process.wait(pid)
+#    puts "[parent] pid: #{pid}"
+
+    Process.detach(fork{ system("/usr/bin/python /home/a1/GPT_launcher/launcher.py --job #{job} --config #{server} --territory #{territory} --version #{version}") })
+
+    haml :index
+redirect '/success' 
+end
+
+get '/success' do
+    haml :success
+end

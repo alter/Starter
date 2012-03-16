@@ -1,0 +1,15 @@
+%html
+%title Success
+%body
+%table{ :border => 0, :width => "100%", :height => "100%", :align => "center" }
+ %tr{ :align => "center" }
+  %td{ :align => "center"}
+   %font{ :size => 5, :color => "red" }
+    Job has been started
+   %br
+   %font{ :size => 3, :color => "black" }
+    The main page will be unavailible while this job is working.
+ %tr{ :align => "center" }
+  %td{ :align => "center" }
+   %p= "#{locals[:result].inspect}"
+

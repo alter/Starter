@@ -1,0 +1,40 @@
+%html
+ %title Starter
+ %body
+ %form{:action => "", :method => "post"}
+  %h4 Choose territory
+  %select{ :name => "territory" }
+   %option AllodsOnline_en
+   %option AllodsOnline_pl
+   %option AllodsOnline_de
+   %option AllodsOnline_fr
+   %option USGala
+   %option LytoGame
+   %option MailRU_GMBH
+   %option LevelUp_Brazil
+   %option LevelUp
+   %option Giant
+   %option CJI
+   %option Cayenne
+   %option MENA
+
+  %h4 Enter version
+  %input{ :name => "version", :size => "11", :value => "3.0.00.49" }
+
+  %h4 Choose job type
+  %select{ :name => "job" }
+   %option download_version
+   %option full_deploy
+   %option restart_shard
+   %option test
+
+  %h4 Choose server
+  %select{ :name => "server"}
+   %option m100
+   %option Bart
+   %option Lisa
+
+  %br 
+  %br
+  %input{:type => "submit", :value => "Send", :class => "button"}
+

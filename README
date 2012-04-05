@@ -1,18 +1,18 @@
-<h1>This project contains two parts</h1>
+This project contains two parts
 taskServer
 taskWebInterface
 
 Transport   protocol: TCP
 Message     protocol: my own
 
-<h3>Message protocol description</h3>
-<h5>taskServer receive next messages:</h5>
+Message protocol description
+taskServer receive next messages:
 "\xdbTask",     add new task in queue. "\xdb" key symbol, for new task;
 "\xdcqlist",    return a list of tasks in queue, each task ends with "\n". "\xdc" key symbol, for get information commands;
 "\xdcstatys",   return current running task, ends with "\n". "\xdc" key symbol, for get information commands;
 "\xddNumber",   remove task from queue, where Number it's Integer value, number of task in queue(from 0). "\xdd" key symbol, for delete task.
 
-<h5>taskServer send next messages:</h5>
+taskServer send next messages:
 list of tasks in queue or "Queue is empty";
 current runngin task   or "There is no running tasks";
 each message ends with "\xde". "\xde" key symbol, for end of message.

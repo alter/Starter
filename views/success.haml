@@ -2,14 +2,22 @@
 %title Success
 %body
 %table{ :border => 0, :width => "100%", :height => "100%" }
- %tr{ :align => "center", :height => "30%" }
-  %td{ :align => "center", :height => "30%"}
+ %tr{ :align => "center", :height => "10%" }
+  %td{ :align => "center", :height => "10%"}
    %font{ :size => 5, :color => "red" }
     Jobs list
-   %br
+ %tr{ :align => "center", :height => "5%" }
+  %td{ :align => "center", :valign => "top", :height => "5%"}
+   %a{ :href => "/" } add new job
    %font{ :size => 3, :color => "black" }
  %tr
-  %td{ :align => "left", :valign => "top"}
+  %td{ :align => "left", :valign => "top", :height => "10%"}
+   Current task:
    %br
    %pre= locals[:result]
+ %tr
+  %td{ :align => "left", :valign => "top"}
+   Tasks in queue:
+   %br
+   %pre= locals[:queue]
 

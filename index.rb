@@ -1,9 +1,15 @@
+#!/usr/bin/ruby
+# encoding: UTF-8
+
 require 'rubygems'
 require 'sinatra'
 require 'haml'
+require 'socket'
 
 set :haml, :format => :html5
-@@result = "No running processes"
+@@result = []
+@@queue  = []
+socket = TCPSocket.new('localhost', 50000) 
 
 get '/' do
     haml :index
@@ -14,15 +20,49 @@ post '/' do
     version     = params[:version]
     job         = params[:job]
     server      = params[:server]
-    Process.detach(fork{ %x[/usr/bin/python /home/a1/GPT_launcher/launcher.py --job #{job} --config #{server} --territory #{territory} --version #{version}] })
-    sleep 2    
-    @@result = %x[ps -ef|grep \[l\]auncher.py]
-    if @@result == ""
-        @@result = "No running processes"
+
+    arg = "--job #{job} --config #{server} --territory #{territory} --version #{version}"
+    socket.puts "\xdb#{arg}"
+
+    socket.puts "\xdcstatus"
+    while data = socket.gets()
+        if data.chomp[-1].chr == "\xde"
+           break 
+        end
+        @@result << data
     end
+
+    socket.puts "\xdcqlist"
+    while data = socket.gets()
+        if data.chomp[-1].chr == "\xde"
+           break 
+        end
+        @@queue << data
+     end
+    
     redirect '/success' 
 end
 
 get '/success' do
-    haml :success, :locals => {:result => @@result }
+    @@result = []
+    @@queue  = []
+   
+    socket.puts "\xdcstatus"
+    while data = socket.gets()
+        if data.chomp[-1].chr == "\xde"
+           break 
+        end
+        @@result << data
+    end
+    
+    socket.puts "\xdcqlist" 
+    while data = socket.gets()
+        if data.chomp[-1].chr == "\xde"
+           break 
+        end
+        @@queue << data
+     end
+
+ 
+    haml :success, :locals => {:result => @@result, :queue => @@queue }
 end

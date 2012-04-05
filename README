@@ -9,7 +9,7 @@ Message protocol description
 taskServer receive next messages:
 "\xdbTask",     add new task in queue. "\xdb" key symbol, for new task;
 "\xdcqlist",    return a list of tasks in queue, each task ends with "\n". "\xdc" key symbol, for get information commands;
-"\xdcstatys",   return current running task, ends with "\n". "\xdc" key symbol, for get information commands;
+"\xdcstatus",   return current running task, ends with "\n". "\xdc" key symbol, for get information commands;
 "\xddNumber",   remove task from queue, where Number it's Integer value, number of task in queue(from 0). "\xdd" key symbol, for delete task.
 
 taskServer send next messages:

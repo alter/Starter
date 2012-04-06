@@ -9,7 +9,13 @@ require 'socket'
 set :haml, :format => :html5
 @@result = []
 @@queue  = []
-socket = TCPSocket.new('localhost', 50000) 
+
+=begin
+m100 192.168.198.66
+Bart 195.211.130.227
+Lisa 195.211.130.227
+=end
+socket = TCPSocket.new('192.168.198.66', 50000) 
 
 get '/' do
     haml :index
@@ -21,8 +27,13 @@ post '/' do
     job         = params[:job]
     server      = params[:server]
 
-    arg = "--job #{job} --config #{server} --territory #{territory} --version #{version}"
-    socket.puts "\xdb#{arg}"
+    if ( version =~ /[0-9]\.[0-9]\.[0-9]{2}\.[0-9]{1,2}/ && territory =~ /[a-zA-Z_]{1,20}/ && job =~ /[a-zA-Z_]{1,20}/ && server =~ /[a-zA-Z0-9]{1,10}/ )
+       arg = "--job #{job} --config #{server} --territory #{territory} --version #{version}"
+       socket.puts "\xdb#{arg}"
+    else
+       arg = ""
+    end
+
 
     socket.puts "\xdcstatus"
     while data = socket.gets()

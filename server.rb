@@ -11,7 +11,9 @@ obj = TQueue.new
 server = TCPServer.new(host, port)
 
 log = Logger.new('server.log')
-
+log.info ""
+log.info "Logserver has been started"
+log.info ""
 $current_task = "";
 
 Thread.start do

@@ -16,18 +16,19 @@ log.info "Logserver has been started"
 log.info ""
 $current_task = "";
 
+program_path = "/home/a1/GPT_launcher/launcher.py"
+
 Thread.start do
     loop do
         arg = obj.pull
         if arg != nil
             $current_task = arg
             log.info "Task with arguments: \"#{arg}\" has been started"
-            %x[/usr/bin/python /home/a1/GPT_launcher/launcher.py #{arg}]
+            %x[/usr/bin/python #{program_path} #{arg}]
             log.info "Task with arguments: \"#{arg}\" has been finished"
             $current_task = ""
         else
-            log.info "Queue is empty"
-            log.info "Waiting 60 seconds"
+            log.info "Queue is empty. Waiting 60 seconds"
             sleep 60
         end
     end

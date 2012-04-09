@@ -9,11 +9,7 @@ require 'socket'
 set :haml, :format => :html5
 @@result = []
 @@queue  = []
-
-@@servers = Hash.new()
 @@servers= { "m100" => "192.168.198.66", "Bart" => "195.211.130.227", "Lisa" => "195.211.130.227" }
-
-
 @@socket = "" # global variable for socket
 
 get '/' do

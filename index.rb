@@ -9,7 +9,13 @@ require 'socket'
 set :haml, :format => :html5
 @@result = []
 @@queue  = []
-@@servers= { "m100" => "192.168.198.66", "Bart" => "195.211.130.227", "Lisa" => "195.211.130.227" }
+
+@@servers= { 
+            "m100" => {"ip" => "192.168.198.66", "check" => 1}, 
+            "Bart" => {"ip" => "195.211.130.227", "check" => 1},
+            "Lisa" => {"ip" => "195.211.130.227", "check" => 0 }
+           }
+
 @@socket = "" # global variable for socket
 
 get '/' do
@@ -22,7 +28,7 @@ post '/' do
     job         = params[:job]
     server      = params[:server]
 
-    @@socket = TCPSocket.new(@@servers[server],50000)
+    @@socket = TCPSocket.new(@@servers[server]["ip"], 50000)
 
     if ( version =~ /[0-9]\.[0-9]\.[0-9]{2}\.[0-9]{1,2}/ && territory =~ /[a-zA-Z_]{1,20}/ && job =~ /[a-zA-Z_]{1,20}/ && server =~ /[a-zA-Z0-9]{1,10}/ )
        arg = "--job #{job} --config #{server} --territory #{territory} --version #{version}"

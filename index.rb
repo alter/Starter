@@ -58,10 +58,14 @@ post '/' do
        arg = ""
     end
 
-    redirect '/success' 
+    redirect '/success', 307 
 end
 
 get '/success' do
+    redirect '/results', 303
+end
+
+post '/success' do
     @@result = []
     @@queue  = []
    
@@ -75,7 +79,7 @@ end
 
 get '/results' do	
     @@result = []
-    @@queue   = []
+    @@queue  = []
 
     @@servers.each do |server,value|
         if @@servers[server]["check"] == 1

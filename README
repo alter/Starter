@@ -1,9 +1,11 @@
+"Starter" it's a project, which can help launch defined command on linux via web-interface on the some amount of servers.
+
 This project contains two parts
 taskServer
 taskWebInterface
 
 Transport   protocol: TCP
-Message     protocol: my own
+Message     protocol: Own
 
 Message protocol description
 taskServer receive next messages:

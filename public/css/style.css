@@ -1,0 +1,84 @@
+
+body, html {
+margin:0px; 
+padding:0px;
+text-align:center; 
+}
+#container{
+margin:0 auto;  
+text-align:left;  
+min-width:550px;  
+width:expression(   
+(document.compatMode && document.compatMode == 'CSS1Compat')
+?
+(
+document.documentElement.clientWidth < 550
+?
+"550px"
+:
+"auto"
+)
+:
+(
+document.body.clientWidth < 550
+?
+"550px"
+:
+"auto"
+)
+);
+}
+#topmenu {
+ background-color:#000000;
+ padding: 10px 0;
+}
+
+#header{
+
+text-align: center;
+}
+#header h1 {
+	margin: 0; 
+	padding: 10px 0; 
+}
+
+#left{
+
+width:200px;  
+float:left;  
+}
+
+#right{
+width:200px; 
+
+float:right; 
+}
+
+#content{
+
+margin:0px; 
+margin-left:152px; 
+margin-right:102px; 
+}
+#content h1 {
+margin:0px; 
+} 
+#content p {
+margin:0px; 
+padding:5px; 
+}
+
+#clear{
+height:0;
+font-size:1px;
+line-height:0px;
+clear:both;
+}
+
+#footer{
+
+}
+#footer p{
+margin:0px;  
+padding: 10px 0; 
+}

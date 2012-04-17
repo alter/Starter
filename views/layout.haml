@@ -1,0 +1,14 @@
+!!!
+%html
+ %head
+  %link(rel="stylesheet" href="css/menu_style.css")
+  %link(rel="stylesheet" href="css/style.css")
+ %body{ :bgcolor => "e1e1e1" }
+  %div{ :id => "container" }
+   %ul{ :id => "hmenu" }
+    %li
+     %a{ :href => "/" } New job
+    %li
+     %a{ :href => "/results" } All jobs
+   %div{ :id => "content" }
+    =yield

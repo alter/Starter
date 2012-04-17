@@ -1,44 +1,45 @@
-%html
- %title Starter
- %body
- %form{ :action => "", :method => "post" }
-  %table{ :valing => "top", :border => "0" }
-   %tr{ :width => "100%", :valign => "top" }
-    %td{ :width => "20%", :valing => "top" }
-     %h4 Choose territory
-     %select{ :name => "territory", :size => "15" }
-      %option{ :selected =>"selected" } AllodsOnline_en
-      %option AllodsOnline_pl
-      %option AllodsOnline_de
-      %option AllodsOnline_fr
-      %option USGala
-      %option LytoGame
-      %option MailRU_GMBH
-      %option LevelUp_Brazil
-      %option LevelUp
-      %option Giant
-      %option CJI
-      %option Cayenne
-      %option MENA
-   
-    %td{ :width => "20%", :valing => "top" }
-     %h4 Choose job type
-     %select{ :name => "job", :size => "15" }
-      %option{ :selected =>"selected" } download_version
-      %option full_deploy
-      %option restart_shard
-      %option test
+%table{ :border => 0, :width => "100%", :height => "100%" }
+ %tr{ :align => "center", :height => "10%" }
+  %td{ :align => "center", :height => "10%"}
+   %h1 New job
+%form{ :action => "", :method => "post" }
+ %table{ :valing => "top", :border => "0" }
+  %tr{ :width => "100%", :valign => "top" }
+   %td{ :width => "20%", :valing => "top" }
+    %h4 Choose territory
+    %select{ :name => "territory", :size => "15" }
+     %option{ :selected =>"selected" } AllodsOnline_en
+     %option AllodsOnline_pl
+     %option AllodsOnline_de
+     %option AllodsOnline_fr
+     %option USGala
+     %option LytoGame
+     %option MailRU_GMBH
+     %option LevelUp_Brazil
+     %option LevelUp
+     %option Giant
+     %option CJI
+     %option Cayenne
+     %option MENA
+ 
+   %td{ :width => "20%", :valing => "top" }
+    %h4 Choose job type
+    %select{ :name => "job", :size => "15" }
+     %option{ :selected =>"selected" } download_version
+     %option full_deploy
+     %option restart_shard
+     %option test
 
-    %td{ :valing => "top", :width => "15%"}
-     %h4 Choose server
-     %select{ :name => "server", :size => "5" }
-      %option{ :selected =>"selected" } m100
-      %option Bart
-      %option Lisa
-   
-  %h4 Enter version
-  %input{ :name => "version", :size => "11", :value => "3.0.00.70" }
-  %br 
-  %br
-  %input{:type => "submit", :value => "Send", :class => "button", :size => "11" }
+   %td{ :valing => "top", :width => "15%"}
+    %h4 Choose server
+    %select{ :name => "server", :size => "5" }
+     %option{ :selected =>"selected" } m100
+     %option Bart
+     %option Lisa
+  
+ %h4 Enter version
+ %input{ :name => "version", :size => "11", :value => "3.0.00.70" }
+ %br 
+ %br
+ %input{:type => "submit", :value => "Send", :class => "button", :size => "11" }
 

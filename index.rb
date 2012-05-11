@@ -95,3 +95,20 @@ get '/results' do
     haml :results, :locals => {:result => @@result, :queue => @@queue }
 end
 
+time_ccu_hash = Hash.new()
+result_arr = []
+
+get '/ccugrep' do
+    haml :ccugrep
+end
+
+post '/ccugrep' do
+    text   = params[:text]
+    time_ccu_hash.clear
+    result_arr.clear
+    text.scan(/([0-9]{13}),\ ([0-9]{1,4})/){|key, value| time_ccu_hash[Time.at(key.to_i/1000).utc] = value}
+    time_ccu_hash.sort.each{|key,value| result_arr << "#{key}: #{value}\n"}
+
+    haml :ccugrep, :locals => {:result => result_arr}
+end
+

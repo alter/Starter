@@ -4,7 +4,7 @@
    %h1 New job
 %form{ :action => "", :method => "post" }
  %table{ :valing => "top", :border => "0" }
-  %tr{ :width => "100%", :valign => "top" }
+  %tr{ :width => "70%", :valign => "top" }
    %td{ :width => "20%", :valing => "top" }
     %h4 Choose territory
     %select{ :name => "territory", :size => "15" }
@@ -12,6 +12,10 @@
      %option AllodsOnline_pl
      %option AllodsOnline_de
      %option AllodsOnline_fr
+     %option AllodsOnline_en_PTS
+     %option AllodsOnline_pl_PTS
+     %option AllodsOnline_de_PTS
+     %option AllodsOnline_fr_PTS
      %option USGala
      %option LytoGame
      %option MailRU_GMBH
@@ -21,6 +25,7 @@
      %option CJI
      %option Cayenne
      %option MENA
+     %option Italy
  
    %td{ :width => "20%", :valing => "top" }
     %h4 Choose job type
@@ -38,7 +43,7 @@
      %option Lisa
   
  %h4 Enter version
- %input{ :name => "version", :size => "11", :value => "3.0.02." }
+ %input{ :name => "version", :size => "11", :value => "4.0." }
  %br 
  %br
  %input{:type => "submit", :value => "Send", :class => "button", :size => "11" }

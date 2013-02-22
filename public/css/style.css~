@@ -6,6 +6,7 @@ body, html {
 
 #container{
   margin:0 auto;  
+  padding-top:40px;
   text-align:left;  
   min-width:550px;  
   width:expression(   
@@ -84,8 +85,4 @@ document.body.clientWidth < 550
 #footer p{
   margin:0px;  
   padding: 10px 0; 
-}
-
-textarea {
-	width: 80%
 }

@@ -43,6 +43,11 @@ get '/' do
     haml :index
 end
 
+get '/css/bootstap-responsive.css' do
+  "Hello World"
+end
+
+
 post '/' do
     territory   = params[:territory]
     version     = params[:version]

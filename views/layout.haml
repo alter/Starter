@@ -1,16 +1,26 @@
 !!!
 %html
- %head
-  %link(rel="stylesheet" href="css/menu_style.css")
-  %link(rel="stylesheet" href="css/style.css")
- %body{ :bgcolor => "e1e1e1" }
-  %div{ :id => "container" }
-   %ul{ :id => "hmenu" }
-    %li
-     %a{ :href => "/" } New job
-    %li
-     %a{ :href => "/results" } All jobs
-    %li
-     %a{ :href => "/ccugrep" } CCU Grep
-   %div{ :id => "content" }
-    =yield
+	%head
+		%script{ :src => "js/jquery-1.9.1.min.js" }
+		%script{ :src => "bootstrap/js/bootstrap.min.js" }
+		%link(rel="stylesheet" href="bootstrap/css/bootstrap.min.css" media="screen")
+		%link(rel="stylesheet" href="bootstrap/css/bootstap-responsive.css")
+		%link(rel="stylesheet" href="css/style.css")
+	%body
+		.container
+			.row
+				.span8
+					.navbar.navbar-fixed-top
+						.navbar-inner
+							.container-fluid
+								%a.brand{ :href => '#' } Allods Deploy System
+								%ul.nav
+									%li
+										%a{ :href => '/'} New job
+									%li
+										%a{ :href => '/results'} All jobs
+									%li
+										%a{ :href => '/ccugrep'} CCU Grep
+	%div{ :id => "container" }
+		%div{ :id => "content" }
+			=yield

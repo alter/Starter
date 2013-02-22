@@ -45,6 +45,14 @@ loop do
             while arg = socket.gets
                 if arg[0].chr == "\xdb"
                     arg.sub!("\xdb","")
+                    arg.replace(";","#")
+                    arg.replace(",","#")
+                    arg.replace(":","#")
+                    arg.replace("&","#")
+                    arg.replace("|","#")
+                    arg.replace("\\","#")
+                    arg.replace("\n","#")
+                    arg.replace("eval","#")
                     log.info "Task with arguments: \"#{arg}\" has been added in queue"
                     obj.push(arg)
                 elsif arg[0].chr == "\xdc"

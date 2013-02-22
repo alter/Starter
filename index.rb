@@ -56,7 +56,7 @@ post '/' do
 
     @@socket = TCPSocket.new(@@servers[server]["ip"], 50000)
 
-    if ( version =~ /[0-9]\.[0-9]\.[0-9]{2}\.[0-9]{1,2}/ && territory =~ /[a-zA-Z_]{1,20}/ && job =~ /[a-zA-Z_]{1,20}/ && server =~ /[a-zA-Z0-9]{1,10}/ )
+    if ( version =~ /[0-9]\.[0-9]\.[0-9]{2}\.[0-9]{1,2}(\.[0-9]{1,3})?/ && territory =~ /[a-zA-Z_]{1,20}/ && job =~ /[a-zA-Z_]{1,20}/ && server =~ /[a-zA-Z0-9]{1,10}/ )
        arg = "--job #{job} --config #{server} --territory #{territory} --version #{version}"
        @@socket.puts "\xdb#{arg}"
     else

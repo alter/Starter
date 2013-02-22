@@ -1,7 +1,8 @@
 #!/usr/bin/ruby
+# encoding: UTF-8
 
 require 'socket'
-require 'lib/queue.rb'
+require './lib/queue.rb'
 require 'logger'
 
 host = '0.0.0.0'

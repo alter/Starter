@@ -102,7 +102,8 @@ time_ccu_hash = Hash.new()
 result_arr = []
 
 get '/ccugrep' do
-    haml :ccugrep
+		result_arr = []
+    haml :ccugrep, :locals => {:result => result_arr, :request => request.request_method}
 end
 
 post '/ccugrep' do
@@ -110,8 +111,8 @@ post '/ccugrep' do
     time_ccu_hash.clear
     result_arr.clear
     text.scan(/([0-9]{13}),\ ([0-9]{1,4})/){|key, value| time_ccu_hash[Time.at(key.to_i/1000).utc] = value}
-    time_ccu_hash.sort.each{|key,value| result_arr << "#{key}: #{value}\n"}
+    time_ccu_hash.sort.each{|key,value| result_arr << "#{key}: #{value}"}
 
-    haml :ccugrep, :locals => {:result => result_arr}
+    haml :ccugrep, :locals => {:result => result_arr, :request => request.request_method}
 end
 

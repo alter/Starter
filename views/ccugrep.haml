@@ -1,18 +1,18 @@
-%html
-	%head
-		%title	CCU	GREP
-	%body
-		%h1	CCU	GREP
-		%table{ :border => "0px" }
-			%tr
-				%th Enter text here
-				%th Results
-				%tr
-					%td{	:valign	=>	"top"	}
-						%form{	:action	=>	"/ccugrep",	:method	=>	"post"	}
-							%textarea{	:name	=>	"text",	:cols	=>	"100",	:rows	=>	"20"}
-							%br
-							%input{:type	=>	"submit",	:value	=>	"Send",	:class	=>	"button",	:size	=>	"11"	}
-					%td{	:valign	=>	"top"	}
-						%pre=	locals[:result]
+%h1	CCU	GREP
+%table{ :border => "0px" }
+	%tr
+		%th Enter text here
+		- if request == "POST"
+			%th Results
+		%tr
+			%td{	:valign	=>	"top"	}
+				%form{	:action	=>	"/ccugrep",	:method	=>	"post"	}
+					%textarea{	:name	=>	"text",	:cols	=>	"100",	:rows	=>	"20"}
+					%br
+					%input{:type	=>	"submit",	:value	=>	"Send",	:class	=>	"button", :size	=>	"11"	}
+			%td{ :valign	=>	"top"	}
+				- if request == "POST"
+					%pre
+						- result.each do |row|
+							%code= row
 

@@ -5,9 +5,13 @@
  %tr
   %td{ :align => "left", :valign => "top", :height => "10%"}
    %h2 Current task:
-   %pre= locals[:result]
+   %pre
+    - result.each do |row|
+     %p row
  %tr
   %td{ :align => "left", :valign => "top"}
    %h2 Tasks in queue:
-   %pre= locals[:queue]
+   %pre
+    - queue.each do |row|
+     %p row
 

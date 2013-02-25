@@ -37,6 +37,7 @@ end
 
 loop do
     socket = server.accept
+#    socket.set_encoding 'UTF-8' 
     Thread.start do
         port = socket.peeraddr[1]
         name = socket.peeraddr[2]
@@ -46,15 +47,19 @@ loop do
             while arg = socket.gets
                 if arg[0].chr == "\xdb"
                     arg.sub!("\xdb","")
-                    arg.sub!(";","#")
-                    arg.sub!(",","#")
-                    arg.sub!(":","#")
-                    arg.sub!("`","#")
-                    arg.sub!("&","#")
-                    arg.sub!("|","#")
-                    arg.sub!("\\","#")
-                    arg.sub!("\n","#")
-                    arg.sub!("eval","#")
+                    arg.sub!(";","")
+                    arg.sub!(",","")
+                    arg.sub!(":","")
+                    arg.sub!("`","")
+                    arg.sub!("&","")
+                    arg.sub!("|","")
+                    arg.sub!("\\","")
+                    arg.sub!("\n","")
+                    arg.sub!("eval","")
+#                    regex = Regexp.compile('^(.*)#.*$')
+#                    if match = s.match(regex)
+#                        arg = match.captures
+#                    end
                     log.info "Task with arguments: \"#{arg}\" has been added in queue"
                     obj.push(arg)
                 elsif arg[0].chr == "\xdc"

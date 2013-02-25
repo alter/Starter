@@ -7,11 +7,11 @@
    %h2 Current task:
    %pre
     - result.each do |row|
-     %p row
+     = row
  %tr
   %td{ :align => "left", :valign => "top"}
    %h2 Tasks in queue:
    %pre
     - queue.each do |row|
-     %p row
+     = row
 

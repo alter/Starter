@@ -110,7 +110,8 @@ post '/ccugrep' do
     text   = params[:text]
     time_ccu_hash.clear
     result_arr.clear
-    text.scan(/([0-9]{13}),\ ([0-9]{1,4})/){|key, value| time_ccu_hash[Time.at(key.to_i/1000).utc] = value}
+		regex = Regexp.new(/([0-9]{13}),\ ([0-9]{1,4})/)
+    text.scan(regex){|key, value| time_ccu_hash[Time.at(key.to_i/1000).utc] = value}
     time_ccu_hash.sort.each{|key,value| result_arr << "#{key}: #{value}"}
 
     haml :ccugrep, :locals => {:result => result_arr, :request => request.request_method}

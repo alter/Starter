@@ -37,6 +37,7 @@ class App < Sinatra::Base
 					end
 					$queue << data
 			 end
+			$queue.each {|task| task.gsub!("\n","<br>")}
 	end
 
 	get '/' do
